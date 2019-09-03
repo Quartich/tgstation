@@ -827,6 +827,11 @@ GLOBAL_LIST_INIT(arcade_prize_pool, list(
 					var/deadname = remove_crewmember()
 					fuel -= lfuel
 					eventdat += "<br>[deadname] was lost deep in the wreckage, and your own vessel lost [lfuel] <b>Fuel</b> maneuvering to the the abandoned ship."
+					if(obj_flags & EMAGGED)
+						var/mob/living/carbon/O = TARGET_RANDOM
+						to_chat(O, "<span class='userdanger'>You find yourself lost in an old ruin!.</span>" )
+						var/area/oldship = loc_name(area/ruin/space/derelict/se_solar)
+						usr.forceMove(oldship)
 				if(35 to 65)
 					var/oldfood = rand(5,11)
 					food += oldfood
